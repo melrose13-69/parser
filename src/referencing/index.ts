@@ -1,9 +1,20 @@
-export default (parsedSchemaFromYaml: string, schemasKey: string, pathsKey: string) => {
-  const parsedJson = JSON.parse(parsedSchemaFromYaml)
-  const schemas = parsedJson[schemasKey]
-  const paths = parsedJson[pathsKey]
+import writeFile from '../writeFile/writeFile'
 
-  return ((schemas, paths) => {
+export default (parsedSchemaFromYaml: string, schemasKey: string, pathsKey: string, writingFile?: { path: string }): object | void => {
+  const parsedJson = JSON.parse(parsedSchemaFromYaml)
+  const generator = (keys: string, obj: object = parsedJson, index = 0): object => {
+    const splittedKeys = keys.split('.')
+
+    if (index < splittedKeys.length - 1) {
+      return generator(keys, obj[splittedKeys[index]], index + 1)
+    }
+
+    return obj[splittedKeys[index]]
+  }
+  const schemas = generator(schemasKey)
+  const paths = generator(pathsKey)
+
+  ;((schemas, paths) => {
     (function req (object) {
       for (const key in object) {
         if (Array.isArray(object[key]) || typeof object[key] === 'object') {
@@ -21,7 +32,11 @@ export default (parsedSchemaFromYaml: string, schemasKey: string, pathsKey: stri
 
       return req
     })(schemas)(paths)
-
-    return Promise.resolve(parsedSchemaFromYaml)
   })(schemas, paths)
+
+  if (writingFile && writingFile.path) {
+    return writeFile(writingFile.path, parsedJson)
+  }
+
+  return parsedJson
 }

@@ -1,0 +1,1 @@
+export const schema =  {"required":["activationKey"],"type":"object","properties":{"activationKey":{"description":"Activation key in UUID format","type":"string","pattern":"^[0-9A-Fa-f]{8}(?:-[0-9A-Fa-f]{4}){3}-[0-9A-Fa-f]{12}$"}}}
