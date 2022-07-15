@@ -1,0 +1,1 @@
+{"type":"object","required":["name","report","parameters"],"properties":{"name":{"type":"string","maxLength":45,"nullable":false},"report":{"type":"string","enum":["flows","bgp"],"nullable":false},"parameters":{"type":"string","nullable":false},"shared":{"type":"boolean","default":false},"description":{"type":"string","maxLength":255,"nullable":true}}}

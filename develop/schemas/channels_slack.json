@@ -1,0 +1,1 @@
+{"required":["avatar_emoji","avatar_url","botname","url"],"type":"object","properties":{"avatar_emoji":{"type":"string","default":":robot-face:"},"avatar_url":{"type":"string","default":"http://www.noction.com/round-logo.png"},"botname":{"type":"string","default":"NFA"},"url":{"type":"string"},"shared":{"type":"boolean","default":false}}}

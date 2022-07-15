@@ -1,0 +1,28 @@
+{
+  "required": [
+    "from",
+    "host",
+    "port"
+  ],
+  "type": "object",
+  "properties": {
+    "from": {
+      "type": "string",
+      "default": "root@localhost"
+    },
+    "host": {
+      "type": "string",
+      "default": "localhost"
+    },
+    "port": {
+      "maximum": 65535,
+      "minimum": 1,
+      "format": "uint16",
+      "type": "integer"
+    },
+    "shared": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

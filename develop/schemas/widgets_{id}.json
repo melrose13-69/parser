@@ -1,0 +1,1 @@
+{"type":"object","properties":{"name":{"type":"string"},"report":{"type":"string","enum":["flows","bgp"]},"graphType":{"type":"string"},"parameters":{"type":"string"},"timeInterval":{"type":"integer"},"shared":{"type":"boolean"},"options":{"type":"string"},"description":{"type":"string","maxLength":255,"nullable":true}}}
